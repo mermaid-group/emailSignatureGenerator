@@ -33,6 +33,8 @@
 
     </form>
  
+ 
+ 
     <button onClick="javascript:generateSignature();" style="width: 360px; height: 35px">Generate E-Signature and Copy to Clipboard</button>
 	<!-- <button onClick="javascript:copyToClipboard('test_iframe');" style="width: 263px; height: 35px">Copy to Clipboard</button> -->
 	
@@ -118,6 +120,7 @@ function copyToClipboard(elementId) {
 }
 
 function copyToClip(str) {
+  
   function listener(e) {
     e.clipboardData.setData("text/html", str);
     e.clipboardData.setData("text/plain", str);
@@ -126,6 +129,9 @@ function copyToClip(str) {
   document.addEventListener("copy", listener);
   document.execCommand("copy");
   document.removeEventListener("copy", listener);
+   
+  alert (window.clipboardData.getData ("Text"));
+   
 };
  
 </script>
