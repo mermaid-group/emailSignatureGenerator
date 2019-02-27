@@ -2,7 +2,7 @@
     <head>
     </head>
 <body>
-    <h1>Mermaid Email Signature Generator</h1>
+    <h1 style="font-family:Calibri,sans-serif; font-size:24pt;">Mermaid Group - Email Signature Generator</h1>
     <br />
     
     <form>
@@ -29,20 +29,21 @@
       Email Address:<br>
       <input type="text" id="emailAddress" name="emailAddress" style="width: 360"><br>
       <br />
-      <br />
+      
 
     </form>
  
  
  
     <button onClick="javascript:generateSignature();" style="width: 360px; height: 35px">Generate E-Signature and Copy to Clipboard</button>
-	<!-- <button onClick="javascript:copyToClipboard('test_iframe');" style="width: 263px; height: 35px">Copy to Clipboard</button> -->
+	<!-- <button onClick="javascript:copyToClipboard('output_iframe');" style="width: 263px; height: 35px">Copy to Clipboard</button> -->
 	
     <br />
-    <br />
-    <iframe id="test_iframe" src="about:blank" width=800 height=140></iframe>
+	<br />
+    
+    <iframe id="output_iframe" src="about:blank" width=800 height=140></iframe>
  
-	
+	<br />
  
     </body>
  
@@ -75,7 +76,7 @@ function generateSignature(){
 	var string_line_2 = mobileNumbers + phoneNumbers + emailAddress
  
     //step 1: get the DOM object of the iframe.
-    var iframe = document.getElementById('test_iframe');
+    var iframe = document.getElementById('output_iframe');
  
     var html_string = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type" /><title>ESignature</title><style type="text/css">table.MsoNormalTable.nowrapping {white-space: nowrap;}</style></head><body><table border="0" cellspacing="1" style="width: 820px; height: 80px; font-size:10pt; font-family:Calibri,sans-serif;"><tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes"><td style="width: 79px; border-top: solid #E5E5E5 1.0pt; padding: 0in 0in 0in 0in; border-left-style: none; border-left-color: inherit; border-left-width: medium; border-right-style: none; border-right-color: inherit; border-right-width: medium; height: 57px; border-bottom-style: none; border-bottom-color: inherit; border-bottom-width: medium;" valign="top"><a href="https://www.mermaid-group.com/"><img style="border-width: 0px; font-size:10pt; font-family:Calibri,sans-serif;" height="55" src="data:image/png;base64,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" width="77" class="logo" alt="mermaid-group.com" /></a></td><td style="width: 10px; border-top: solid #E5E5E5 1.0pt; padding: 0in 0in 0in 0in; border-left-style: none; border-left-color: inherit; border-left-width: medium; border-right-style: none; border-right-color: inherit; border-right-width: medium; height: 57px; border-bottom-style: none; border-bottom-color: inherit; border-bottom-width: medium;" valign="top"></td><td style="width: 720px; border-top: solid #E5E5E5 1.0pt; padding: 0in 0in 0in 0in; border-left-style: none; border-left-color: inherit; border-left-width: medium; border-right-style: none; border-right-color: inherit; border-right-width: medium; height: 57px; border-bottom-style: none; border-bottom-color: inherit; border-bottom-width: medium;" valign="top"><p class="MsoNormal" style="margin:0px"> <span>' + string_line_1 + '</span> <br /> <span>' + string_line_2 + '</span> <br /> <span>Mermaid Subsea Services</span> </p></td><td style="width: 10px; border-top: solid #E5E5E5 1.0pt; padding: 0in 0in 0in 0in; border-left-style: none; border-left-color: inherit; border-left-width: medium; border-right-style: none; border-right-color: inherit; border-right-width: medium; height: 57px; border-bottom-style: none; border-bottom-color: inherit; border-bottom-width: medium;" valign="top"></td></tr></table><p style="margin-top:8px"><span style="font-family:Calibri,sans-serif; color: #808080; font-size:6pt "><strong>Disclaimers: </strong>This electronic transmission, and any attachments hereto, is intended only for the use of each individual recipient named above and may contain information belonging to the sender that is confidential, proprietary, is subject to copyright, constitutes a trade secret or is legally privileged. If you are not an intended recipient, you are hereby notified that any disclosure, copying, distribution or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this transmission in error, please immediately (i) notify the sender, and (ii) permanently delete and/or destroy the original and all copies of this electronic transmission and all attachments hereto.</p></body></html>';
  
@@ -102,10 +103,10 @@ function generateSignature(){
      } else {
         //just in case of browsers that don't support the above 3 properties.
         //fortunately we don't come across such case so far.
-        alert('Cannot inject dynamic contents into iframe.');
+        alert('Operation not supported by browser');
      }
 
-	 copyToClipboard('test_iframe');
+	 copyToClipboard('output_iframe');
 }
 
 
