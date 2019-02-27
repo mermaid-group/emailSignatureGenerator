@@ -69,7 +69,7 @@ function generateSignature(){
 	
 	var emailAddress = document.getElementById("emailAddress").value
 	if(emailAddress!=""){
-		emailAddress = "<strong>E </strong>" + '<span> <a href="mailto:' + emailAddress +  'style="color:blue; text-decoration:underline;">' + emailAddress + "</a></span>"
+		emailAddress = "<strong>E </strong>" + '<span> <a href="mailto:' + emailAddress +  '" style="color:blue; text-decoration:underline;">' + emailAddress + "</a></span>"
 	}
 	
 	var string_line_1 = fullname + " | " + jobTitle + " | " + department
