@@ -2,11 +2,47 @@
     <head>
     </head>
 <body>
-    <h1>Email Signature Generator</h1>
+    <h1>Mermaid Email Signature Generator</h1>
+    <br />
+    
+    <form>
+      Full name:<br>
+      <input type="text" name="fullname" style="width: 300"><br>
+      <br />
+
+      Job Title:<br>
+      <input type="text" name="jobTitle" style="width: 300"><br>
+      <br />
+
+      Department:<br>
+      <input type="text" name="department" style="width: 300"><br>
+      <br />
+
+      Mobile Number(s):<br>
+      <input type="text" name="mobile" style="width: 300"><br>
+      <br />
+
+      Telephone Numbers:<br>
+      <input type="text" name="phone" style="width: 300"><br>
+      <br />
+      
+      Email Address:<br>
+      <input type="text" name="email" style="width: 300"><br>
+      <br />
+      <br />
+
+      <input type="checkbox" name="zmosContract"> I'm working on ZMOS Contract<br>
+    
+        <br />
+
+    </form>
+ 
+    <button onClick="javascript:injectHTML();" style="width: 263px; height: 35px">Generate E-Signature</button>
+    <br />
+    <br />
     <iframe id="test_iframe" src="about:blank" width=800 height=140></iframe>
  
-    <button onClick="javascript:injectHTML();">Inject HTML</button>
-</body>
+    </body>
  
 <script language="javascript">
 function injectHTML(){
