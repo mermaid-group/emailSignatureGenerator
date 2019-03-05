@@ -30,29 +30,29 @@
 			
 			<form>
 				<label class="radio">
-					<input type="radio" name="Boolean_OnZMOS" value="1" style=> Yes, I'm on contract with ZMOS (Zamil)<br>
+					<input type="radio" name="Boolean_OnZMOS" value="1" onclick=updateEntityDropdown("1")> Yes, I'm on contract with ZMOS (Zamil)<br>
 				</label>
 				<label class="radio">
-					<input type="radio" name="Boolean_OnZMOS" value="0" checked> No<br>
+					<input type="radio" name="Boolean_OnZMOS" value="0" onclick=updateEntityDropdown("0") checked> No<br>
 				</label>
 			</form>
 		<br>
 		
 	
       <span class="label header">Full name</span><br>
-      <input type="text" id="fullname" name="fullname" style="width: 360"><br>
+      <input type="text" id="fullname" name="fullname" style="width: 400"><br>
       <br>
 	  
       <span class="label header">Job Title</span><br>
-      <input type="text" id="jobTitle" name="jobTitle" style="width: 360"><br>
+      <input type="text" id="jobTitle" name="jobTitle" style="width: 400"><br>
       <br>
 	  
       <span class="label header">Department</span><br>
 	  <span class="label description"><strong>HINT: </strong>Select from the list OR manually type it if not available from the list provided</span><br>
-     <!-- <input type="text" id="department" name="department" style="width: 360"><br>
+     <!-- <input type="text" id="department" name="department" style="width: 400"><br>
       <br /> -->
 
-	  <input list="departments" id="department" name="department" style="width: 360"/>
+	  <input list="departments" id="department" name="department" style="width: 400"/>
 		<datalist id="departments">
 			<option value="Administration Dept.">
 			<option value="Business Development Dept.">
@@ -110,24 +110,34 @@
 	  <span class="label header">Mobile Number(s) [Optional]</span><br>
       <span class="label description"><strong>HINT: </strong>If you have multiple numbers, use semicolon ';' as separator e.g. <i>UAE: +971-12-3456789 ; Thailand: +6681-987-6543</span></i>
 	  <br>
-      <input type="text" id="mobileNumbers" name="mobileNumbers" style="width: 360"><br>
+      <input type="text" id="mobileNumbers" name="mobileNumbers" style="width: 400"><br>
       <br>
 	  
 	  <span class="label header">Telephone Number(s)</span><br>
       <span class="label description"><strong>HINT: </strong>If you have multiple numbers, use semicolon ';' as separator e.g. <i>UAE: +971-12-3456789 ; Thailand: +6681-987-6543</span></i>
 	  <br>
-      <input type="text" id="phoneNumbers" name="phoneNumbers" style="width: 360"><br>
+      <input type="text" id="phoneNumbers" name="phoneNumbers" style="width: 400"><br>
       <br />
       
 	  <span class="label header">Email Address</span><br>
-      <input type="text" id="emailAddress" name="emailAddress" style="width: 360"><br>
+      <input type="text" id="emailAddress" name="emailAddress" style="width: 400"><br>
       <br />
       
     </form>
  
-	<br>
+	
+	
+	<span class="label header">Entity/Brand</span><br>
+	<select id="entity" name="entity" style="width: 400">
+	  <option value="MSS">Mermaid Subsea Services</option>
+	  <option value="MML">Mermaid Maritime Plc.</option>
+	</select>
+		
+	  <br>
+	  <br>
+	  <br>
  
-    <button onClick="javascript:generateSignature();" style="width: 360px; height: 35px"><strong>Generate E-Signature</strong></button>
+    <button onClick="javascript:generateSignature();" style="width: 400px; height: 35px"><strong>Generate E-Signature</strong></button>
 	<!-- <button onClick="javascript:copyToClipboard('output_iframe');" style="width: 263px; height: 35px">Copy to Clipboard</button> -->
 	
     <br>
@@ -172,7 +182,12 @@ function generateSignature(){
     var iframe = document.getElementById('output_iframe');
 	var logo_area_width = 79
 	var ZMOS_logo_string = ""
-	var string_line_3 = '<span>Mermaid Subsea Services</span> | <span><a href="https://www.mermaid-group.com">mermaid-group.com</a></span>'
+	var string_line_3 = ""
+	
+	var eEntity = document.getElementById("entity");
+	var string_line_3_brand = '<span>' + eEntity.options[eEntity.selectedIndex].text +'</span> | ';	
+	var string_line_3_website = '<span><a href="https://www.mermaid-group.com">mermaid-group.com</a></span>'
+	
 	var OnZMOS_cb = document.querySelector('input[name="Boolean_OnZMOS"]:checked')
 	
 	if (OnZMOS_cb == null){
@@ -181,9 +196,10 @@ function generateSignature(){
 	} else if (OnZMOS_cb.value == 1){
 		ZMOS_logo_string = '<img height="55" src="img/ZMOS_Logo.png" width="111" /></td>';
 		logo_area_width = 220;
-		string_line_3 = '<span>Mermaid Subsea Services; Zamil Mermaid Offshore Company</span> | <span><a href="http://zamilmermaid.com/">zamilmermaid.com</a></span>'
+		string_line_3_website = '<span><a href="http://zamilmermaid.com/">zamilmermaid.com</a></span>'
 		}
 	
+	string_line_3 = string_line_3_brand + string_line_3_website
  
     var html_string = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type" /><title>ESignature</title><style type="text/css">table.MsoNormalTable.nowrapping {white-space: nowrap;}</style></head><body><table border="0" cellspacing="1" style="width: 820px; height: 80px; font-size:10pt; font-family:Calibri,sans-serif;"><tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes"><td style="width: ' + logo_area_width +'px; border-top: solid #E5E5E5 1.0pt; padding: 0in 0in 0in 0in; border-left-style: none; border-left-color: inherit; border-left-width: medium; border-right-style: none; border-right-color: inherit; border-right-width: medium; height: 57px; border-bottom-style: none; border-bottom-color: inherit; border-bottom-width: medium;" valign="top"><img style="border-width: 0px; font-size:10pt; font-family:Calibri,sans-serif;" height="55" src="img/logo.png" width="77" class="logo"/>' + ZMOS_logo_string + '</a></td><td style="width: 10px; border-top: solid #E5E5E5 1.0pt; padding: 0in 0in 0in 0in; border-left-style: none; border-left-color: inherit; border-left-width: medium; border-right-style: none; border-right-color: inherit; border-right-width: medium; height: 57px; border-bottom-style: none; border-bottom-color: inherit; border-bottom-width: medium;" valign="top"></td><td style="width: 720px; border-top: solid #E5E5E5 1.0pt; padding: 0in 0in 0in 0in; border-left-style: none; border-left-color: inherit; border-left-width: medium; border-right-style: none; border-right-color: inherit; border-right-width: medium; height: 57px; border-bottom-style: none; border-bottom-color: inherit; border-bottom-width: medium;" valign="top"><p class="MsoNormal" style="margin:0px"> <span>' + string_line_1 + '</span> <br /> <span>' + string_line_2 + '</span> <br /> ' + string_line_3 + ' </p></td><td style="width: 10px; border-top: solid #E5E5E5 1.0pt; padding: 0in 0in 0in 0in; border-left-style: none; border-left-color: inherit; border-left-width: medium; border-right-style: none; border-right-color: inherit; border-right-width: medium; height: 57px; border-bottom-style: none; border-bottom-color: inherit; border-bottom-width: medium;" valign="top"></td></tr></table><p style="margin-top:8px"><span style="font-family:Calibri,sans-serif; color: #808080; font-size:6pt "><strong>Disclaimers: </strong>This electronic transmission, and any attachments hereto, is intended only for the use of each individual recipient named above and may contain information belonging to the sender that is confidential, proprietary, is subject to copyright, constitutes a trade secret or is legally privileged. If you are not an intended recipient, you are hereby notified that any disclosure, copying, distribution or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this transmission in error, please immediately (i) notify the sender, and (ii) permanently delete and/or destroy the original and all copies of this electronic transmission and all attachments hereto.</p></body></html>';
  
@@ -217,6 +233,20 @@ function generateSignature(){
 	 //copyToClip(html_string);
 }
 
+function updateEntityDropdown(input){
+	//alert(input)
+	if (input=="1")
+		{
+			document.getElementById("entity")[0].selected=true;
+			document.getElementById("entity")[0].innerHTML = "Mermaid Subsea Services; Zamil Mermaid Offshore Company";
+			document.getElementById("entity").disabled=true;
+		} else
+		{
+			document.getElementById("entity").disabled=false;
+			document.getElementById("entity")[0].innerHTML = "Mermaid Subsea Services";
+		}
+	
+}
 
 function copyToClipboard(elementId) {
 
@@ -240,6 +270,8 @@ function copyToClip(str) {
    
    
 };
+ 
+
  
 </script>
 </html>
