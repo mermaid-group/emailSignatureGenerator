@@ -27,12 +27,8 @@
     <hr>
 	<br>
 	<span class="label header">Introduction</span><br>
-	<span class="label intro">This web page has been provided for Mermaid staff to create standardized email footer. <br> Please refer to the How-To <a href="https://www.youtube.com/watch?v=1FXIyXtSgn0">video</a> or How-To <a href="/emailSignatureGenerator/src/HowToDoc.pdf"> document</a>, and proceed to generate and apply your personalized email footer</span><br><br>
-	<hr>
-	<!--
-	<iframe width="800" height="450" src="https://www.youtube.com/embed/1FXIyXtSgn0" frameborder="0" allow="accelerometer; autoplay=0 encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
-	-->
-	
+	<span class="label intro">This web page has been provided for Mermaid staff to create standardized email footer. <br> Please refer to the How-To <a href="https://www.youtube.com/watch?v=qldHF9CfuIY">video</a> or How-To <a href="/emailSignatureGenerator/src/HowToDoc.pdf"> document</a>, and proceed to generate and apply your personalized email footer</span><br><br>
+	<hr>	
 	
 	<br>
 	<br>
@@ -152,7 +148,6 @@
 	  <br>
  
     <button onClick="javascript:generateSignature();" style="width: 400px; height: 35px"><strong>Generate E-Signature</strong></button>
-	<!-- <button onClick="javascript:copyToClipboard('output_iframe');" style="width: 263px; height: 35px">Copy to Clipboard</button> -->
 	
     <br>
 	<br>
@@ -243,8 +238,6 @@ function generateSignature(){
         alert('Operation not supported by browser');
      }
 
-	 //copyToClipboard('output_iframe');
-	 //copyToClip(html_string);
 }
 
 function updateEntityDropdown(input){
@@ -261,30 +254,6 @@ function updateEntityDropdown(input){
 		}
 	
 }
-
-function copyToClipboard(elementId) {
-
-	var iframe = document.getElementById(elementId);
-	var iframe_contents = iframe.contentDocument.body.innerHTML;
-	copyToClip(iframe_contents);
-	// alert(iframe_contents);
-
-}
-
-function copyToClip(str) {
-  
-  function listener(e) {
-    e.clipboardData.setData("text/html", str);
-    e.clipboardData.setData("text/plain", str);
-    e.preventDefault();
-  }
-  document.addEventListener("copy", listener);
-  document.execCommand("copy");
-  document.removeEventListener("copy", listener);
-   
-   
-};
- 
 
  
 </script>
