@@ -110,10 +110,8 @@
 			<option value="Operations Dept. (ZMOS:Diving)">
 			<option value="Operations Director Office">
 			<option value="Operations Director Office (ZMOS:Diving)">
-			<option value="Procurement  Dept.">
-			<option value="Procurement / Logistics Dept">
-			<option value="Procurement / Logistics Dept.">
 			<option value="Procurement Dept.">
+			<option value="Procurement / Logistics Dept.">
 			<option value="Projects Dept.">
 			<option value="Projects Dept. (ZMOS:Diving)">
 			<option value="Public Relation Dept.">
@@ -175,29 +173,32 @@
  
 <script language="javascript">
 function generateSignature(){
-   
+
+	
     var fullname = document.getElementById("fullname").value
-	fullname = "<span><strong>" + fullname + "</strong></span>"
+	fullname = "<span><strong>" + htmlEscape(fullname) + "</strong></span>"
 	
-	var jobTitle = document.getElementById("jobTitle").value
-	var department = document.getElementById("department").value
+	var jobTitle = htmlEscape(document.getElementById("jobTitle").value)
+		
+	var department = htmlEscape(document.getElementById("department").value)
 	
-	var mobileNumbers = document.getElementById("mobileNumbers").value
+	var mobileNumbers = htmlEscape(document.getElementById("mobileNumbers").value)
 	if(mobileNumbers!=""){
 		mobileNumbers = "<span><strong>M </strong>" + mobileNumbers + "</span> | "
 	}
 	
-	var phoneNumbers = document.getElementById("phoneNumbers").value
+	var phoneNumbers = htmlEscape(document.getElementById("phoneNumbers").value)
 	
 	if(phoneNumbers!=""){
 		phoneNumbers = "<span><strong>T </strong>" + phoneNumbers + "</span> | "
 	}
 	
-	var emailAddress = document.getElementById("emailAddress").value
+	var emailAddress = htmlEscape(document.getElementById("emailAddress").value)
 	if(emailAddress!=""){
 		emailAddress = "<strong>E </strong>" + '<span> <a href="mailto:' + emailAddress +  '" style="color:blue; text-decoration:underline;">' + emailAddress + "</a></span>"
 	}
 	
+
 	var string_line_1 = fullname + " | " + jobTitle + " | " + department
 	var string_line_2 = mobileNumbers + phoneNumbers + emailAddress
  
@@ -268,6 +269,25 @@ function updateEntityDropdown(input){
 			document.getElementById("entity")[0].innerHTML = "Mermaid Subsea Services";
 		}
 	
+}
+
+function htmlEscape(str) {
+    return str
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
+
+// I needed the opposite function today, so adding here too:
+function htmlUnescape(str){
+    return str
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&amp;/g, '&');
 }
 
  
